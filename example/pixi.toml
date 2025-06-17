@@ -1,0 +1,21 @@
+[workspace]
+authors = ["Joey Yang <zeyuyang2022@u.northwestern.edu>"]
+channels = ["conda-forge"]
+name = "example"
+platforms = ["osx-arm64", "linux-64", "win-64"]
+version = "0.1.0"
+
+[tasks]
+lab = { cmd = "jupyter lab", description = "Launch JupyterLab" }
+start={depends-on=[{task="lab"}],description="Start exploring the Pixi proejct"}
+
+[dependencies]
+python = ">=3.13.5,<3.14"
+numpy = ">=2.3.0,<3"
+notebook = ">=7.4.3,<8"
+jupyterlab = ">=4.4.3,<5"
+
+[feature.dev.dependencies]
+pre-commit = ">=4.2.0,<5"
+[environments]
+dev=["dev"]
